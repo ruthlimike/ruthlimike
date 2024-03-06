@@ -1,5 +1,8 @@
 ### Hi there 👋
 
+- 🌱 I’m currently learning Information Technology
+- 📫 How to reach me: Contact me on whatsapp or instagram!
+- ⚡ Fun fact: Im just a girl in a world
 <!--
 **ruthlimike/ruthlimike** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
