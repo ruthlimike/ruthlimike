@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="./css/output.css">
+
+<!-- npx tailwindcss -i ./src/css/input.css -o ./web/css/output.css --watch -->
+<!-- npm run script -->
+
+
+</head> 
+<body class="bg-gray-100">
+       
+   <header class="bg-black h-35 max-w-screen-xl lg:max-w-full px-10 py-6">
+    <div class="flex lg:mx-auto max-w-screen-xl justify-between items-center">
+        <div class="flex items-center">
+            <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/logo-pendidikan@2x.0ce0acdc.webp" class="w-9 h-9 mr-3">
+            <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/logo-white@2x.5330316a.webp" class="w-13 h-9">
+        </div>
+        
+
+        <div class=" inset-y-0 flex items-center pr-4"> 
+            <!-- Tambahkan tombol hamburger menu hanya saat layar kecil -->
+            <button id="toggleButton" class="block md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>                
+            </button>
+        </div> 
+
+        <div class="text-4xl text-white font-bold hidden md:flex right-0 items-center"> 
+            <ul class="flex space-x-8 items-center"> 
+               
+                <li><a class="text-white text-sm" href="#">Beranda</a></li>
+                <li><a class="text-white text-sm " href="#">Program</a></li>
+                <li><a class="text-white text-sm" href="#">Butuh Bantuan?</a></li>
+               
+                <li>
+                    <button class="bg-white text-black py-2 px-2 rounded-full text-xs flex items-center">
+                        <svg viewBox="0 0 24 24" height="20" fill="#A0A4A8" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2">
+                            <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"></path>
+                        </svg>
+                        Masuk ke Akun
+                    </button>
+                </li>
+            
+            </ul>                                          
+        </div>
+
+    </div>
+</header>
+
+        
+
+
+<nav class="bg-gray-100 flex  items-center h-35 px-10 py-4 max-w-screen-xl  lg:max-w-full">
+    <div class="flex space-x-4 justify-center font-bold lg:mx-auto">
+       
+        <!-- Daftar tautan menu yang tersembunyi di bawah tombol hamburger menu -->
+        <div id="menuLinks" class="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 justify-center">
+            <a href="#" class="text-black hover:text-blue-600 px-3 py-2 rounded-md flex items-center mr-4">
+                Kampus Mengajar
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 14l-6-6 1.414-1.414L10 11.172l4.586-4.586L16 8z"/>
+                </svg>
+            </a>
+            <a href="#" class="text-black hover:text-blue-600 px-3 py-2 rounded-md flex items-center mr-4">
+                Magang MSIB 
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 14l-6-6 1.414-1.414L10 11.172l4.586-4.586L16 8z"/>
+                </svg>
+            </a>
+            
+            <a href="#" class="text-black hover:text-blue-600 px-3 py-2 rounded-md flex items-center mr-4">Studi Independen Bersertifikat
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 14l-6-6 1.414-1.414L10 11.172l4.586-4.586L16 8z"/>
+                </svg>
+            </a>
+            <a href="#" class="text-black hover:text-blue-600 px-3 py-2 rounded-md flex items-center mr-4">Pertukaran Mahasiswa Merdeka
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 14l-6-6 1.414-1.414L10 11.172l4.586-4.586L16 8z"/>
+                </svg>
+            </a>
+            <a href="#" class="text-black hover:text-blue-600 px-3 py-2 rounded-md flex items-center mr-4">Program dan Kegiatan Lainnya
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 14l-6-6 1.414-1.414L10 11.172l4.586-4.586L16 8z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Dapatkan tombol hamburger dan tautan menu
+    const toggleButton = document.getElementById('toggleButton');
+    const menuLinks = document.getElementById('menuLinks');
+
+    // Tambahkan event listener untuk mengontrol visibilitas tautan menu
+    toggleButton.addEventListener('click', () => {
+        menuLinks.classList.toggle('hidden');
+    });
+</script>
+
+
+
+
+<div class="max-w-screen-xl lg:mx-auto lg:px-4 lg:pl-6 bg-gray-100 pb-20 mb-16">
+
+    <h1 class="text-black font-bold text-3xl px-5 py-3 mt-5">Program Kampus Merdeka</h1>
+
+    <div class="container flex flex-wrap mx-auto max-w-screen-xl px-4 mt-11 gap-4">
+
+<!-- card 1 -->
+    <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10" style="border-radius: 20px;">
+        <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/kampus-mengajar-logo@2x.7822f1d5.webp" alt="Kampus Mengajar" class="w-full h-30 object-cover">
+        <div class="p-4">
+            <h2 class="text-xl font-bold mb-2">Kampus Mengajar</h2>
+            <p class="text-gray-700 mb-2 pb-12">Bantu peningkatan kualitas pendidikan dasar dengan terlibat langsung pada proses pengajaran di sekolah-sekolah yang berlokasi di seluruh daerah di Indonesia.</p>
+            <hr class="border-t-2">
+            <div class="text-blue-700">
+                    <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+                        <span class="flex-1 font-semibold">Tentang Program</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                          </svg>
+                        </a>
+                    <hr class="border-t-2">
+                    <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+                        <span class="flex-1 font-semibold">Syarat dan Ketentuan</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                          </svg>
+                    </a>
+                </div>
+        </div>
+  </div>
+
+
+
+  <!-- card 2 -->
+  <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10 w-full" style="border-radius: 20px;">    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/msib-logo.8402a51e.webp" alt="MSIB" class="w-full h-30 object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Magang MSIB</h2>
+      <p class="text-gray-700 mb-2">Dapatkan pengalaman dunia kerja secara langsung sebagai persiapan kariermu.</p>
+      <div class="text-center">
+      <a href="#" class="inline-block mx-auto w-full lg:max-w-none mt-8 mb-6 bg-white border border-black text-black font-semibold px-4 py-2 rounded hover:bg-gray-200 hover:border-gray-400">
+        Cari Posisi Magang
+    </a>
+    </div>
+      <hr class="border-t-2">
+      <div class="text-blue-700">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+        <hr class="border-t-2">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Syarat dan Ketentuan</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+        </a>
+    </div>
+    </div>
+  </div>
+
+
+  
+<!-- card 3 -->
+<div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10 w-full" style="border-radius: 20px;">    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/msib-logo.8402a51e.webp" alt="MSIB" class="w-full h-30 object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Studi Independen</h2>
+      <p class="text-gray-700 mb-2">Jalankan proyek penelitian dengan studi kasus nyata dari para pelaku industri ternama.</p>
+      <div class="text-center">
+      <a href="#" class="inline-block mx-auto  w-full lg:max-w-none mt-2 mb-6 bg-white border border-black text-black font-semibold px-4 py-2 rounded hover:bg-gray-200 hover:border-gray-400">
+        Cari Kelas Studi Independen
+    </a>
+    </div>
+      <hr class="border-t-2">
+      <div class="text-blue-700">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+        <hr class="border-t-2">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Syarat dan Ketentuan</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+        </a>
+    </div>
+    </div>
+  </div>
+
+ 
+
+
+<!-- card 4 -->
+  <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10" style="border-radius: 20px;">    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/pmm-logo.02f2aceb.webp" alt="PMM" class="w-full h-30 object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Pertukaran Mahasiswa Merdeka</h2>
+      <p class="text-gray-700 mb-2 pb-10">Program pertukaran mahasiswa dalam negeri  yang memberikan pengalaman langsung untuk lebih memaknai keberagaman budaya nusantara.</p>
+      <hr class="border-t-2 mt-7">
+      <div class="text-blue-500">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+        <hr class="border-t-2">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Syarat dan Ketentuan</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+        </a>
+    </div>
+    </div>
+  </div>
+
+
+
+ <!-- card 5 -->
+ <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10 w-full" style="border-radius: 20px;">   <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/wmk-logo.8e10d0f7.webp" alt="wirausaha" class="w-auto h-30 object-cover mx-auto">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2 mt-2">Wirausaha Merdeka</h2>
+      <p class="text-gray-700 mb-2 pb-8">Ikuti program unggulan dari berbagai Perguruan Tinggi yang bertujuan untuk meningkatkan kemampuan wirausaha.</p>
+      <hr class="border-t-2 mt-20">
+      <div class="text-blue-500">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- card 6 -->
+  <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10" style="border-radius: 20px;">
+    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/iisma-logo.0971cb16.webp" alt="iisma" class="w-auto mx-auto h-30 object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Indonesian International Student Mobility Awards</h2>
+      <p class="text-gray-700 mb-2 pb-10">Bantu peningkatan kualitas pendidikan dasar dengan terlibat langsung pada proses pengajaran di sekolah-sekolah yang berlokasi di seluruh daerah di Indonesia.</p>
+      <hr class="border-t-2">
+      <div class="text-blue-500">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+        <hr class="border-t-2">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Syarat dan Ketentuan</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+        </a>
+    </div>
+    </div>
+  </div>
+
+
+
+  <!-- card 7 -->
+  <div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10" style="border-radius: 20px;">
+    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/praktisi-mengajar-logo.f46e6623.webp" alt="praktisi" class="w-auto h-30 mx-auto object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Kampus Mengajar</h2>
+      <p class="text-gray-700 mb-16">Bantu peningkatan kualitas pendidikan dasar dengan terlibat langsung pada proses pengajaran di sekolah-sekolah yang berlokasi di seluruh daerah di Indonesia.</p>
+      <hr class="border-t-2">
+      <div class="text-blue-500">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Program</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+        </a>
+    </div>
+    </div>
+  </div>
+
+  </div>
+
+ 
+  <hr class="border-t-2 border-gray-300 mt-10 mx-6">
+
+
+  <h1 class="text-black font-bold text-3xl px-5 py-3 mt-5 mb-10">Kegiatan Lainnya</h1>
+
+
+ <!-- card 8-->
+<div class="bg-white shadow-md overflow-hidden lg:w-96 mb-0 px-4 pt-10 ml-4 mr-4 mx-auto" style="border-radius: 20px;">    
+    <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/logo-mandiri.4e08d727.webp" alt="MSIB" class="w-auto mx-auto h-30 object-cover">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2">Magang Mandiri</h2>
+      <p class="text-gray-700 mb-2">Temukan pengalaman dunia kerja yang dikelola langsung oleh perusahaan tanpa ada batasan kuota dan jadwal yang lebih fleksibel.</p>
+      <div class="text-center">
+      <a href="#" class="inline-block mx-auto w-full  lg:max-w-none mt-2 mb-6 bg-white border border-black text-black font-semibold px-4 py-2 rounded hover:bg-gray-200 hover:border-gray-400">
+        Cari Posisi Magang
+    </a>
+    </div>
+      <hr class="border-t-2">
+      <div class="text-blue-700">
+        <a href="#" class="flex items-center text-blue py-2 px-4 hover:bg-gray-200">
+            <span class="flex-1 font-semibold">Tentang Kegiatan</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6 ml-2 text-5xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+    </div>
+    </div>
+
+
+
+
+
+  </div>
+ 
+
+
+
+  </div>
+
+
+
+
+  <footer class="bg-black max-w-screen-xl lg:max-w-full hidden lg:block">
+   <!-- pembungkus luar atas -->
+    <div class="flex lg:mx-auto max-w-screen-xl justify-center w-full bg-black pt-16">
+
+
+        <!-- logo -->
+        <div class="bg-black ml-0 ">
+            <img src="https://kampusmerdeka.kemdikbud.go.id/static/media/logo-kemendikbud@2x.8229b760.webp" alt="MSIB" class="w-28 h-auto object-cover">
+
+        </div>
+
+        <!-- direktorat -->
+        <div class="bg-black px-8 ml-0">
+            <h1 class="font-bold text-white">Direktorat Jenderal Pendidikan Tinggi, Riset, dan</h1>
+            <h1 class="font-bold text-white"> Teknologi (Diktiristek)</h1>
+
+            <p class="font-semibold text-white pt-12">marketing@kampusmerdeka.co</p>
+            <p class="font-semibold text-white pt-4">Jl. Jenderal Sudirman, Senayan, Jakarta 10270</p>
+
+        </div>
+
+        <!-- nav taut -->
+        <div class="bg-black flex mx-0 text-white px-20 ml-4">
+
+            <!-- dinav -->
+            <div class="flex flex-col mx-4">
+                <h1 class="pb-14 font-bold">Navigasi</h1>
+                <a class="py-3">Beranda</a>
+                <a class="py-2">Tentang Kami</a>
+                <a class="py-2">Berita</a>
+                <a class="py-2">Pengumuman</a>
+                <a class="py-2">FAQ</a>
+                <a class="py-2">Program</a>
+                <a class="py-2">Daftar</a>
+
+            </div>
+
+            <!-- ditaut -->
+            <div class="mx-8 ml-32">
+                <h1 class="pb-16 font-bold py-1">Tautan Eksternal</h1>
+                <a class="">Mitra Kampus Merdeka</a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- pembungkus bawah -->
+    <div class="flex lg:mx-auto max-w-screen-xl justify-between bg-black pt-8 px-28 ml-4 ">
+
+        <div class="social-icon flex ml-16 mr-1 bg-black mb-24 gap-5" style="padding: 10px 20px; width: max-content;">
+            <!-- Twitter Icon -->
+            <svg viewBox="0 0 24 24" height="24" fill="#FFFFFF" stroke=""><path d="M21.5,7.1c0,0.2,0,0.4,0,0.6c0,6.5-4.9,13.9-13.9,13.9v0c-2.7,0-5.3-0.8-7.5-2.2c0.4,0,0.8,0.1,1.2,0.1  c2.2,0,4.3-0.7,6.1-2.1c-2.1,0-3.9-1.4-4.6-3.4C3.5,14.2,4.2,14.2,5,14C2.7,13.5,1,11.5,1,9.2c0,0,0,0,0-0.1  c0.7,0.4,1.4,0.6,2.2,0.6C1.1,8.3,0.5,5.4,1.7,3.2c2.5,3.1,6.1,4.9,10.1,5.1c-0.4-1.7,0.1-3.5,1.4-4.7c2-1.9,5.1-1.8,6.9,0.2  c1.1-0.2,2.1-0.6,3.1-1.2c-0.4,1.1-1.1,2.1-2.1,2.7c1-0.1,1.9-0.4,2.8-0.8C23.3,5.6,22.4,6.4,21.5,7.1z"></path></svg>           
+            <!-- Instagram Icon -->
+            <svg viewBox="0 0 24 24" height="24" fill="#FFFFFF" stroke=""><path d="M16.9,0H7.1C3.2,0,0,3.2,0,7.1v9.7C0,20.8,3.2,24,7.1,24h9.7c3.9,0,7.1-3.2,7.1-7.1V7.1C24,3.2,20.8,0,16.9,0z M21.6,16.9  c0,2.6-2.1,4.7-4.7,4.7H7.1c-2.6,0-4.7-2.1-4.7-4.7V7.1c0-2.6,2.1-4.7,4.7-4.7h9.7c2.6,0,4.7,2.1,4.7,4.7V16.9z M12,5.8  c-3.4,0-6.2,2.8-6.2,6.2c0,3.4,2.8,6.2,6.2,6.2c3.4,0,6.2-2.8,6.2-6.2C18.2,8.6,15.4,5.8,12,5.8z M12,15.8c-2.1,0-3.8-1.7-3.8-3.8  c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C15.8,14.1,14.1,15.8,12,15.8z M18.2,7.3c0.8,0,1.5-0.7,1.5-1.5S19,4.4,18.2,4.4  c-0.8,0-1.5,0.7-1.5,1.5S17.4,7.3,18.2,7.3z"></path></svg>           
+             <!-- YouTube Icon -->           
+            <svg viewBox="0 0 48 48" height="24" fill="#FFFFFF" stroke=""><path d="M43.2,12.4c-0.5-1.7-1.8-3.1-3.5-3.5C36.5,8,24,8,24,8S11.5,8,8.4,8.8c-1.7,0.5-3.1,1.8-3.5,3.5C4,15.5,4,24,4,24  s0,8.5,0.8,11.6c0.5,1.7,1.8,3.1,3.5,3.5C11.5,40,24,40,24,40s12.5,0,15.6-0.8c1.7-0.5,3.1-1.8,3.5-3.5C44,32.5,44,24,44,24  S44,15.5,43.2,12.4z M20,29.2V18.8c0-0.8,0.8-1.2,1.5-0.9l9,5.2c0.7,0.4,0.7,1.3,0,1.7l-9,5.2C20.8,30.4,20,30,20,29.2z"></path></svg>        
+            <!-- Facebook Icon -->
+            <svg viewBox="0 0 48 48" height="24" fill="#FFFFFF" stroke=""><path d="M24,4C13,4,4,13,4,24c0,10.8,8.6,19.6,19.2,20V30.1h-4.7v-5.5h4.7v-4c0-4.6,2.8-7.2,7-7.2c1.4,0,2.8,0.1,4.2,0.2v4.9h-2.9  c-2.3,0-2.7,1.1-2.7,2.6v3.5h5.4l-0.7,5.4h-4.7v13.3C37.5,41.2,44,33.4,44,24C44,13,35,4,24,4z"></path></svg>       
+            <!-- LinkedIn Icon -->
+            <svg viewBox="0 0 24 24" height="24" fill="#FFFFFF" stroke=""><path d="M4 0C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0H4ZM7.4649 19.9386H3.90414V9.22581H7.4649V19.9386ZM5.68452 7.76366H5.66099C4.46653 7.76366 3.69231 6.94075 3.69231 5.91218C3.69231 4.86103 4.48916 4.06143 5.70783 4.06143C6.92677 4.06143 7.67583 4.86103 7.69915 5.91218C7.69915 6.94075 6.92677 7.76366 5.68452 7.76366ZM20.3077 19.9386H16.746V14.2072C16.746 12.7677 16.2314 11.7851 14.9423 11.7851C13.9578 11.7851 13.3728 12.4467 13.1151 13.0875C13.0214 13.3165 12.9969 13.6347 12.9969 13.9557V19.9386H9.43453C9.43453 19.9386 9.48227 10.2309 9.43453 9.22586H12.9969V10.7439C13.4702 10.0156 14.3149 8.97437 16.2069 8.97437C18.5508 8.97437 20.3077 10.5051 20.3077 13.7954V19.9386Z"></path></svg>
+            <!-- Dikti Icon -->
+            <svg viewBox="0 0 24 24" height="24" fill="#FFFFFF" stroke=""><path d="M12,24c6.6,0,12-5.4,12-12S18.6,0,12,0S0,5.4,0,12S5.4,24,12,24z M15.4,21.7c0.8-0.8,1.4-1.8,1.9-2.9  c0.6,0.2,1.1,0.5,1.7,0.8C17.9,20.4,16.7,21.2,15.4,21.7z M20.2,18.1c-0.7-0.4-1.4-0.8-2.2-1c0.4-1.3,0.7-2.7,0.8-4.2h3.4  C22,14.8,21.3,16.6,20.2,18.1z M22.2,11.1h-3.4c-0.1-1.5-0.4-2.9-0.8-4.2c0.8-0.3,1.5-0.6,2.2-1C21.3,7.4,22,9.2,22.2,11.1z M19,4.5  c-0.5,0.3-1.1,0.5-1.7,0.8c-0.5-1.1-1.2-2.1-2-2.9C16.7,2.8,17.9,3.6,19,4.5z M12.9,2.5c1.1,0.8,2,2,2.7,3.3  c-0.9,0.2-1.8,0.3-2.7,0.4V2.5z M12.9,8c1.2-0.1,2.3-0.2,3.4-0.5c0.4,1.1,0.6,2.4,0.7,3.7h-4.1V8z M12.9,12.9H17  c-0.1,1.3-0.3,2.5-0.7,3.7c-1.1-0.3-2.2-0.5-3.4-0.5V12.9z M12.9,17.8c0.9,0.1,1.8,0.2,2.7,0.4c-0.7,1.4-1.6,2.5-2.7,3.3V17.8z   M5,19.5c0.5-0.3,1.1-0.5,1.7-0.7c0.5,1.1,1.2,2.1,1.9,2.9C7.3,21.2,6.1,20.4,5,19.5z M11.1,21.5c-1.1-0.8-2-2-2.7-3.3  c0.9-0.2,1.8-0.3,2.7-0.4V21.5z M11.1,16c-1.2,0.1-2.3,0.2-3.4,0.5c-0.4-1.1-0.6-2.4-0.7-3.7h4.1V16z M11.1,11.1H7  c0.1-1.3,0.3-2.5,0.7-3.7C8.8,7.7,9.9,7.9,11.1,8V11.1z M11.1,2.5v3.7C10.2,6.1,9.3,6,8.4,5.8C9.1,4.4,10,3.3,11.1,2.5z M8.7,2.3  c-0.8,0.8-1.4,1.8-2,2.9C6.1,5.1,5.6,4.8,5,4.5C6.1,3.6,7.3,2.8,8.7,2.3z M3.8,5.9c0.7,0.4,1.4,0.8,2.2,1c-0.4,1.3-0.7,2.7-0.8,4.2  H1.8C2,9.2,2.7,7.4,3.8,5.9z M5.2,12.9c0.1,1.5,0.4,2.9,0.8,4.2c-0.8,0.3-1.5,0.6-2.2,1c-1.1-1.5-1.8-3.3-2-5.2H5.2z"></path></svg>
+        </div>
+
+        <!-- hakcipta -->
+
+        <div class=" bg-black mb-24 ml-2 mr-7 flex flex-col">
+            <a class="text-white">Hak Cipta 2022 Kementerian Pendidikan dan Kebudayaan RI</a>
+            <a class="text-white">Foto oleh ITS, ITERA, and UI</a>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<div class="fixed bottom-0 left-0 w-full bg-white text-gray-500 p-3 lg:hidden full:block">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex justify-center w-full">
+            <!-- Menu -->
+            <ul id="menu" class="justify-around w-full flex">
+                <li class="w-1/4 text-center flex flex-col items-center ">
+                    <svg viewBox="0 0 24 24" height="24" fill="#A0A4A8" stroke=""><path d="M10,20v-6h4v6h5v-8h3L12,3L2,12h3v8H10z"></path></svg>
+                    <a href="#" class="hover:text-gray-400 block">Beranda</a>
+                </li>
+                <li class="w-1/4 text-center flex flex-col items-center">
+                    <svg viewBox="0 0 24 24" height="24" fill="#F66951" stroke=""><path d="M10 16V15H3.01L3 19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V15H14V16H10ZM20 7H15.99V5L13.99 3H9.99L7.99 5V7H4C2.9 7 2 7.9 2 9V12C2 13.11 2.89 14 4 14H10V12H14V14H20C21.1 14 22 13.1 22 12V9C22 7.9 21.1 7 20 7ZM14 7H10V5H14V7Z"></path></svg>
+                    <a href="#" class="hover:text-gray-400 block active text-black font-bold">Program</a> <!-- Menambahkan kelas active untuk menandai item sebagai aktif -->
+                </li>
+                <li class="w-1/4 text-center flex flex-col items-center">
+                    <svg viewBox="0 0 41 41" height="24" fill="#A0A4A8" stroke=""><path d="M20.5,38.9c-10.1,0-18.4-8.2-18.4-18.4S10.4,2.1,20.5,2.1s18.4,8.2,18.4,18.4S30.6,38.9,20.5,38.9z M20.5,5.5  c-8.3,0-15,6.7-15,15s6.7,15,15,15s15-6.7,15-15S28.8,5.5,20.5,5.5z"></path><path d="M20.4,23.9c-0.7,0-1.4-0.4-1.6-1.2c-0.3-0.9,0.2-1.8,1.1-2.1c1-0.3,3.8-1.7,3.8-3.4c0-0.8-0.3-1.5-0.8-2.1  c-0.5-0.6-1.2-1-2-1.1c-0.8-0.1-1.6,0-2.2,0.4c-0.7,0.4-1.2,1-1.4,1.8c-0.3,0.9-1.3,1.3-2.2,1c-0.9-0.3-1.3-1.3-1-2.2  c0.5-1.5,1.6-2.7,2.9-3.5c1.4-0.8,3-1.1,4.5-0.8c1.6,0.3,3,1.1,4,2.3c1,1.2,1.6,2.7,1.6,4.3c0,4.4-5.5,6.4-6.2,6.6  C20.7,23.8,20.5,23.9,20.4,23.9z"></path><path d="M20.5,30.5c-0.9,0-1.7-0.8-1.7-1.7s0.7-1.7,1.7-1.7h0c0.9,0,1.7,0.8,1.7,1.7S21.4,30.5,20.5,30.5z"></path></svg>
+                    <a href="#" class="hover:text-gray-400 block">FAQ</a>
+                </li>
+                <li class="w-1/4 text-center flex flex-col items-center">
+                    <svg viewBox="0 0 24 24" height="24" fill="#A0A4A8" stroke=""><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"></path></svg>
+                    <a href="#" class="hover:text-gray-400 block">Masuk</a>
+                </li>
+            </ul>
+
+            <div class="md:hidden">
+                <!-- Tampilkan saat layar kecil -->
+                <button onclick="toggleMenu()">
+                    <!-- Tambahkan icon untuk menampilkan menu saat di klik -->
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+  
+   
+      
+   
+</body>
+</html>
